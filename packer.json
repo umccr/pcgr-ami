@@ -1,0 +1,49 @@
+{
+  "variables": {
+    "commit_id": "{{env `TRAVIS_COMMIT`}}",
+    "commit_msg": "{{env `TRAVIS_COMMIT_MESSAGE`}}",
+    "custom_ami_name": "pcgr-ami",
+    "ssh_username": "ubuntu"
+  },
+  "builders": [
+    {
+      "name": "{{user `custom_ami_name`}}",
+      "type": "amazon-ebs",
+      "iam_instance_profile": "new_packer_instance_profile",
+      "region": "ap-southeast-2",
+      "source_ami": "ami-79915c1b",
+      "instance_type": "t2.medium",
+      "spot_price": "auto",
+      "spot_price_auto_product": "Linux/UNIX",
+      "ssh_username": "{{user `ssh_username`}}",
+      "ssh_timeout": "10m",
+      "ami_name": "{{user `custom_ami_name`}} {{timestamp}}",
+      "ami_description": "{{user `custom_ami_name`}} AMI",
+      "run_tags": {
+        "ami-create": "{{user `custom_ami_name`}}"
+      },
+      "tags": {
+        "ami": "{{user `custom_ami_name`}}",
+        "Name": "{{user `custom_ami_name`}}:{{user `commit_id`}}",
+        "timestamp": "{{timestamp}}",
+        "commit": "{{user `commit_id`}}",
+        "commit_msg": "{{user `commit_msg`}}"
+      },
+      "associate_public_ip_address": true
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "echo 'packer' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'",
+      "inline": [
+		    "sudo pip install ansible",
+        "git clone https://github.com/umccr/pcgr-deploy"
+      ]
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "pcgr-deploy/ansible/site.yml"
+    }
+  ]
+}
