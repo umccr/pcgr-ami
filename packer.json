@@ -35,10 +35,7 @@
   "provisioners": [
     {
       "type": "shell",
-      "execute_command": "echo 'packer' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'",
-      "inline": [
-        "ls -alh /tmp/pcgr-deploy && ls -alh /tmp"
-      ]
+      "execute_command": "echo 'packer' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'"
     },
     {
       "type": "ansible",
