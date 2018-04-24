@@ -19,7 +19,7 @@ install:
 - sudo ln -sf /usr/local/packer-${PACKER_VERSION}/packer /usr/local/bin/packer
 - packer --version
 - sudo apt-get install -y jq
-- pip install awscli --upgrade
+- pip install awscli ansible --upgrade
 - aws --version
 script:
 - "./build.sh"
