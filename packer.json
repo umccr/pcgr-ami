@@ -37,7 +37,9 @@
       "type": "shell",
       "execute_command": "echo 'packer' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'",
       "inline": [
-        "git clone https://github.com/umccr/pcgr-deploy /tmp/pcgr-deploy"
+        "git clone https://github.com/umccr/pcgr-deploy /tmp/pcgr-deploy",
+        "ls -alh /tmp/pcgr-deploy && ls -alh /tmp",
+        "pip install ansible"
       ]
     },
     {
