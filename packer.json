@@ -37,13 +37,11 @@
       "type": "shell",
       "execute_command": "echo 'packer' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'",
       "inline": [
-        "git clone https://github.com/umccr/pcgr-deploy /tmp/pcgr-deploy",
-        "ls -alh /tmp/pcgr-deploy && ls -alh /tmp",
-        "pip install ansible"
+        "ls -alh /tmp/pcgr-deploy && ls -alh /tmp"
       ]
     },
     {
-      "type": "ansible-local",
+      "type": "ansible",
       "playbook_file": "/tmp/pcgr-deploy/ansible/site.yml"
     }
   ]
