@@ -38,7 +38,7 @@
       "execute_command": "echo 'packer' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'",
       "inline": [
         "sudo apt -y update",
-        "sudo apt -y install python python-dev python-pip"
+        "sudo apt -y install python2 python-dev python-pip"
       ]
     },
     {
