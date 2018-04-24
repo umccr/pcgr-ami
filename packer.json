@@ -34,6 +34,13 @@
   ],
   "provisioners": [
     {
+      "type": "shell",
+      "execute_command": "echo 'packer' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'",
+      "inline": [
+        "sudo apt install python python-dev python-pip"
+      ]
+    },
+    {
       "type": "ansible",
       "playbook_file": "/tmp/pcgr-deploy/ansible/site.yml"
     }
