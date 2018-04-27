@@ -30,7 +30,7 @@
         "commit": "{{user `commit_id`}}",
         "commit_msg": "{{user `commit_msg`}}"
       },
-      "ami_block_device_mappings": [
+      "launch_block_device_mappings": [
       {
         "device_name": "/dev/sdb",
         "volume_size": 50,
