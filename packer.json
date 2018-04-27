@@ -30,18 +30,12 @@
         "commit": "{{user `commit_id`}}",
         "commit_msg": "{{user `commit_msg`}}"
       },
-      "launch_block_device_mappings": [
-        {
-          "device_name": "/dev/sdb",
-          "volume_size": 50,
-          "volume_type": "gp2",
-          "delete_on_termination": true
-        }
-      ],
       "ami_block_device_mappings": [
       {
         "device_name": "/dev/sdb",
-        "virtual_name": "/dev/xvdb"
+        "volume_size": 50,
+        "volume_type": "gp2",
+        "delete_on_termination": true
       }
 		  ]
     }
@@ -52,5 +46,5 @@
       "extra_arguments": [ "--extra-vars", "ansible_python_interpreter=/usr/bin/python3"],
       "playbook_file": "/tmp/pcgr-deploy/ansible/site.yml"
     }
-  ]
+ ]
 }
