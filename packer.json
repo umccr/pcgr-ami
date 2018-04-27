@@ -19,6 +19,7 @@
       "ssh_timeout": "10m",
       "ami_name": "{{user `custom_ami_name`}} {{timestamp}}",
       "ami_description": "{{user `custom_ami_name`}} AMI",
+      "associate_public_ip_address": true,
       "run_tags": {
         "ami-create": "{{user `custom_ami_name`}}"
       },
@@ -29,7 +30,20 @@
         "commit": "{{user `commit_id`}}",
         "commit_msg": "{{user `commit_msg`}}"
       },
-      "associate_public_ip_address": true
+      "launch_block_device_mappings": [
+        {
+          "device_name": "/dev/sdb",
+          "volume_size": 50,
+          "volume_type": "gp2",
+          "delete_on_termination": true
+        }
+      ],
+      "ami_block_device_mappings": [
+      {
+        "device_name": "/dev/sdb",
+        "virtual_name": "/dev/xvdb"
+      }
+		  ]
     }
   ],
   "provisioners": [
