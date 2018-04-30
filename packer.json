@@ -11,7 +11,7 @@
       "type": "amazon-ebs",
       "iam_instance_profile": "new_packer_instance_profile",
       "region": "ap-southeast-2",
-      "source_ami": "ami-87b065e5",
+      "source_ami": "ami-fbb66399",
       "instance_type": "t2.medium",
       "spot_price": "auto",
       "spot_price_auto_product": "Linux/UNIX",
