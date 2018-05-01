@@ -17,6 +17,10 @@
       "spot_price_auto_product": "Linux/UNIX",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_timeout": "10m",
+      "ami_users": [
+        "472057503814",
+        "620123204273"
+      ],
       "ami_name": "{{user `custom_ami_name`}} {{timestamp}}",
       "ami_description": "{{user `custom_ami_name`}} AMI",
       "associate_public_ip_address": true,
