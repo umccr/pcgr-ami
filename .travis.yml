@@ -24,6 +24,6 @@ install:
 - aws --version
 script:
 - "./build.sh &"
-- travis_wait 50
+- travis_wait 50 sleep 3000
 after_success:
   - "./send-datadog-event.sh"
