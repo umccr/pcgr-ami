@@ -13,4 +13,12 @@ export AWS_SECRET_ACCESS_KEY=$(echo $temp_role | jq .Credentials.SecretAccessKey
 export AWS_SESSION_TOKEN=$(echo $temp_role | jq .Credentials.SessionToken | xargs)
 
 # with the new access credentials packer can now build the AMI
-packer build -machine-readable packer.json | sudo tee packer-build.log
+if [ "$1" = "common" ]; then
+  # packer build -machine-readable packer.json | sudo tee packer-build.log
+  echo "ami-pcgr-common" | sudo tee packer-build.log
+elif [ "$1" = "databundle" ]; then
+  # packer build -machine-readable packer-data.json | sudo tee packer-data-build.log
+  echo "ami-pcgr-databundle" | sudo tee packer-data-build.log
+else
+  echo "Not a supported use case!"
+fi

@@ -5,6 +5,9 @@ branches:
 env:
   global:
   - PACKER_VERSION="1.2.2"
+  matrix:
+  - ANSIBLE_JOB=common
+  - ANSIBLE_JOB=databundle
 notifications:
   email: false
   slack:
@@ -23,6 +26,7 @@ install:
 - git clone https://github.com/umccr/pcgr-deploy /tmp/pcgr-deploy
 - aws --version
 script:
-- travis_wait 50 "./build.sh"
+# - travis_wait 50 "./build.sh"
+- ./build.sh $ANSIBLE_JOB
 after_success:
   - "./send-datadog-event.sh"
