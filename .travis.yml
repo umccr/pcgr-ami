@@ -23,7 +23,6 @@ install:
 - git clone https://github.com/umccr/pcgr-deploy /tmp/pcgr-deploy
 - aws --version
 script:
-- "./build.sh &"
-- travis_wait 50 sleep 3000
+- travis_wait 50 "./build.sh"
 after_success:
   - "./send-datadog-event.sh"
