@@ -15,10 +15,10 @@ export AWS_SESSION_TOKEN=$(echo $temp_role | jq .Credentials.SessionToken | xarg
 # with the new access credentials packer can now build the AMI
 if [ "$1" = "common" ]; then
   # packer build -machine-readable packer.json | sudo tee packer-build.log
-  echo "ami-pcgr-common" | sudo tee packer-build.log
+  echo "1526860192,stackstorm-ami,artifact,0,id,ap-southeast-2:ami-pcgr-common" | sudo tee packer-build.log
 elif [ "$1" = "databundle" ]; then
   # packer build -machine-readable packer-data.json | sudo tee packer-data-build.log
-  echo "ami-pcgr-databundle" | sudo tee packer-data-build.log
+  echo "1526860192,stackstorm-ami,artifact,0,id,ap-southeast-2:ami-pcgr-databundle" | sudo tee packer-data-build.log
 else
   echo "Not a supported use case!"
 fi
