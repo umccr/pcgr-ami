@@ -16,7 +16,7 @@
       "spot_price": "auto",
       "spot_price_auto_product": "Linux/UNIX",
       "ssh_username": "{{user `ssh_username`}}",
-      "ssh_timeout": "10m",
+      "ssh_timeout": "5m",
       "ami_users": [
         "472057503814",
         "620123204273"
