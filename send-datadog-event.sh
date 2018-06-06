@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-APP="pcgr"
+APP="$1"
 
 # install DataDog Python library
 pip install datadog
