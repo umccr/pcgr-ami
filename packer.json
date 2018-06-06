@@ -45,8 +45,7 @@
       {
         "device_name": "/dev/sdb",
         "volume_size": 25,
-        "volume_type": "io1",
-        "iops": "10000",
+        "volume_type": "gp2",
         "delete_on_termination": true
       }
      ]
